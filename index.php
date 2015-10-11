@@ -41,9 +41,23 @@
 			<div class="clearfix visible-xs-block"></div>
 		</div><br/>
 		<div class="col-xs-12">
-			<button class="btn btn-success btnConverter" title="Pega o HTML do editor, converte para o modelo da APInfo e joga no campo de resultado ">converter</button>
-			<button class="btn btn-default btnPreview" title="Abre modal para previsualizar o resultado" >preview</button>
-			<button class="btn btn-default btnVoltarEditor" title="Pega o HTML do campo de resultado e joga no editor para melhorias">voltar do código para o editor</button>
+			<button class="btn btn-success btnConverter" 
+				title="Pega o HTML do editor, converte para o modelo da APInfo e joga no campo de resultado "
+			>
+				<i class="glyphicon glyphicon-refresh"></i>
+				converter
+			</button>
+			<button class="btn btn-default btnPreview" title="Abre modal para previsualizar o resultado" >
+				<i class="glyphicon glyphicon-sunglasses"></i>
+				preview
+				</button>
+			<button 
+				class="btn btn-default btnVoltarEditor" 
+				title="Pega o HTML do campo de resultado e joga no editor para melhorias"
+				>
+					<i class="glyphicon glyphicon-backward"></i>
+					voltar do código para o editor
+				</button>
 		</div>
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
