@@ -14,7 +14,7 @@ textarea{
 	clear: both;
 }
 </style>
-<form action="" method="POST">
+<div>
 	<div class="col">
 		<label for="html">Cole do word, writer, etc.</label>
 		<textarea  id="html" name="html"></textarea>
@@ -25,9 +25,9 @@ textarea{
 		<textarea id="convertedHtml" name="convertedHtml"></textarea>
 	</div>
 	<div>
-		<button>converter</button>
+		<button class="converter">converter</button>
 	</div>
-</form>
+</div>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 <script>
@@ -42,13 +42,10 @@ var e = tinymce.init({
   toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
 });
 $(function(){
-	$("form").submit(function(e){
-		
+	$("button.converter").click(function(){
 		var converted = convertHTML2ApInfoHTML(tinyMCE.get('html').getContent());
 		// setando no visor
 		$("#convertedHtml").val(converted);
-
-		e.preventDefault();
 	});
 });
 
