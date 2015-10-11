@@ -15,7 +15,8 @@
 		<div class="clearfix visible-xs-block"></div>
 	</div><br/>
 	<div class="col-xs-12">
-		<button class="btn converter">converter</button>
+		<button class="btn btn-success btnConverter">converter</button>
+		<button class="btn btn-default btnPreview">preview</button>
 	</div>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -26,17 +27,18 @@ var e = tinymce.init({
 	entity_encoding : "raw",
 	plugins: [
     "advlist autolink lists link image charmap print preview anchor",
-    "searchreplace visualblocks code fullscreen",
+    "searchreplace visualblocks",
     "insertdatetime media table contextmenu paste"
   ],
   toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
 });
 $(function(){
-	$("button.converter").click(function(){
+	$("button.btnConverter").click(function(){
 		var converted = convertHTML2ApInfoHTML(tinyMCE.get('html').getContent());
 		// setando no visor
 		$("#convertedHtml").val(converted);
 	});
+
 });
 
 /**
