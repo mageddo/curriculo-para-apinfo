@@ -14,20 +14,25 @@ textarea{
 	clear: both;
 }
 </style>
-<div>
-	<div class="col">
-		<label for="html">Cole do word, writer, etc.</label>
-		<textarea  id="html" name="html"></textarea>
-		<div class="clear"></div>
+<div >
+	<div class=" clearfix">
+		<div class="col-xs-6">
+			<label for="html">Cole do word, writer, etc.</label>
+			<textarea  id="html" name="html"></textarea>
+			<div class="clear"></div>
+		</div>
+		<div class="col-xs-6">
+			<label for="convertedHtml">HTML convertido para ser usado na ApInfo</label>
+			<textarea id="convertedHtml" name="convertedHtml"></textarea>
+		</div>
+		<div class="clearfix visible-xs-block"></div>
+	</div><br/>
+	<div class="col-xs-12">
+		<button class="btn converter">converter</button>
 	</div>
-	<div class="col">
-		<label for="convertedHtml">HTML convertido para ser usado na ApInfo</label>
-		<textarea id="convertedHtml" name="convertedHtml"></textarea>
-	</div>
-	<div>
-		<button class="converter">converter</button>
-	</div>
-</div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 <script>
