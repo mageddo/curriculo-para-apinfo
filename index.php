@@ -42,26 +42,32 @@ var e = tinymce.init({
   toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
 });
 $(function(){
-
 	$("form").submit(function(e){
-		var toConvert = $("#html").val();
-		//var converted = $('<textarea />').html(toConvert).text();
-		// var o = $("<div />").html(toConvert);
-		// o.find("style, meta, script, title, link, img").remove();
-		// var converted = o.html();
-		var converted = tinyMCE.get('html').getContent().replace(/(<[a-zA-Z]+)[^>]*(>)/gm, "$1$2");
-		var tmp = $("<div />").html(converted);
-		tmp.find("li").each(function(){
-			// console.log(this);
-			$(this).html($(this).text());
-		});
-		converted = tmp.html();
-		converted = converted.replace(/<[\/]*ul>[\r\n]*/gm, "").replace(/<([\/]*)li>[\r\n]*/gm, "");
-		converted = $('<textarea />').html(converted).text();
-		//replace(/<([\/]*)li>/gm, "<$1p>")
+		
+		var converted = convertHTML2ApInfoHTML(tinyMCE.get('html').getContent());
+		// setando no visor
 		$("#convertedHtml").val(converted);
+
 		e.preventDefault();
 	});
 });
+
+/**
+ * Limpa e converte o HTML do tinymce para um formato aceito pela APInfo tentando exibir da melhor forma
+ */
+function convertHTML2ApInfoHTML (raw) {
+	// tirando os atributos das tags 
+	raw = raw.replace(/(<[a-zA-Z]+)[^>]*(>)/gm, "$1$2");
+	// tirando os parágrafos de dentro das lis
+	var tmp = $("<div />").html(raw);
+	tmp.find("li").each(function(){
+		$(this).html($(this).text());
+	});
+	raw = tmp.html();
+	// removendo as uls lis
+	raw = raw.replace(/<[\/]*ul>[\r\n]*/gm, "").replace(/<([\/]*)li>[\r\n]*/gm, "");
+	// convertendo as html entities para raw text
+	return $('<textarea />').html(raw).text();
+}
 
 </script>
