@@ -6,7 +6,8 @@ var e = tinymce.init({
     "searchreplace visualblocks",
     "insertdatetime media table contextmenu paste"
   ],
-  toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+  toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+	valid_elements : "strong/b,p,h3,center,br,ul,li"
 });
 $(function(){
 	$("button.btnConverter").click(function(){
@@ -33,11 +34,15 @@ function convertHTML2ApInfoHTML (raw) {
 	// tirando os parágrafos de dentro das lis
 	var tmp = $("<div />").html(raw);
 	tmp.find("li").each(function(){
-		$(this).html($(this).text());
+		var that = $(this);
+		that.html(that.html().replace(/<br[ \/]*>/gm, "\r\n"));
+		that.html(that.find("p").text());
+		that.html(that.text());
 	});
 	raw = tmp.html();
+	//raw = raw.replace(/<p[\/ ]*>(.+)<\/p>/gm, "$1");
 	// removendo as uls lis
-	raw = raw.replace(/<[\/]*ul>[\r\n]*/gm, "").replace(/<([\/]*)li>[\r\n]*/gm, "");
+	raw = raw.replace(/<[\/]*ul>[\r\n]*/gm, "").replace(/<([\/]*)li>/gm, "");
 	// convertendo as html entities para raw text
 	return $('<textarea />').html(raw).text();
 }
