@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "publicando site..."
+
+file="htl2apinfo.tar.gz"
+rm -f $file;
+
+tar -czf $file * \
+--exclude 'install' \
+--exclude $file \
+--warning=no-file-changed
+
+echo "tudo pronto!!!"
